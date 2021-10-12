@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hackathon_app/data/mock_data.dart';
+import 'package:hackathon_app/models/category.dart';
+import 'package:hackathon_app/screens/question_screen.dart';
 
 import 'package:hackathon_app/utils/constants.dart';
+import 'package:hackathon_app/widgets/page_header.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +37,26 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  Widget categoryGridItem(BuildContext context, Category category) {
+    return GestureDetector(
+      child: SubcategoryCard(
+        image: category.image,
+        title: category.name,
+        isActive: true,
+        progress: category.completionStatus,
+      ),
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => QuestionPage(
+              category: category,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: <Widget>[
             MyHeader(
-              image: "assets/icons/Drcorona.svg",
+              image: "assets/images/sammy-finance.png",
               textTop: "כל מה שאתם צריכים",
               textBottom: "להתנהלות כלכלית נכונה.",
               offset: offset,
@@ -58,54 +82,56 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisSpacing: 20,
                     crossAxisCount: 3,
                     children: [
-                      GestureDetector(
-                        child: SubcategoryCard(
-                          image: "assets/icons/icons8-bank-building-48.png",
-                          title: "בנקים",
-                          isActive: true,
-                        ),
-                        onTap: () {},
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-bank-cards-48.png",
-                        title: "כרטיסי אשראי",
-                        isActive: true,
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-property-48.png",
-                        title: "משכנתא",
-                        isActive: true,
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-stocks-48.png",
-                        title: "מניות",
-                        isActive: true,
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-bonds-48.png",
-                        title: "אג״ח",
-                        isActive: true,
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-bank-euro-48.png",
-                        title: "מט״ח",
-                        isActive: true,
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-money-box-48.png",
-                        title: "חסכונות",
-                        isActive: true,
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-heart-health-48.png",
-                        title: "ביטוח בריאות",
-                        isActive: true,
-                      ),
-                      SubcategoryCard(
-                        image: "assets/icons/icons8-car-insurance-48.png",
-                        title: "ביטוח רכב",
-                        isActive: true,
-                      ),
+                      categoryGridItem(context, banking_category),
+                      categoryGridItem(context, bank_card_category),
+                      categoryGridItem(context, mortgage_category),
+                      categoryGridItem(context, stocks_category),
+                      categoryGridItem(context, bonds_category),
+                      categoryGridItem(context, foreign_exchange_category),
+                      categoryGridItem(context, savings_category),
+                      categoryGridItem(context, life_insurance_category),
+                      categoryGridItem(context, car_insurance_category),
+
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-bank-cards-48.png",
+                      //   title: "כרטיסי אשראי",
+                      //   isActive: true,
+                      // ),
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-property-48.png",
+                      //   title: "משכנתא",
+                      //   isActive: true,
+                      // ),
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-stocks-48.png",
+                      //   title: "מניות",
+                      //   isActive: true,
+                      // ),
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-bonds-48.png",
+                      //   title: "אג״ח",
+                      //   isActive: true,
+                      // ),
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-bank-euro-48.png",
+                      //   title: "מט״ח",
+                      //   isActive: true,
+                      // ),
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-money-box-48.png",
+                      //   title: "חסכונות",
+                      //   isActive: true,
+                      // ),
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-heart-health-48.png",
+                      //   title: "ביטוח בריאות",
+                      //   isActive: true,
+                      // ),
+                      // SubcategoryCard(
+                      //   image: "assets/icons/icons8-car-insurance-48.png",
+                      //   title: "ביטוח רכב",
+                      //   isActive: true,
+                      // ),
                     ],
                   ),
                 ),
@@ -172,96 +198,6 @@ class Counter extends StatelessWidget {
         Text(title, style: kSubTextStyle),
       ],
     );
-  }
-}
-
-class MyHeader extends StatefulWidget {
-  final String image;
-  final String textTop;
-  final String textBottom;
-  final double offset;
-  const MyHeader(
-      {Key key, this.image, this.textTop, this.textBottom, this.offset})
-      : super(key: key);
-
-  @override
-  _MyHeaderState createState() => _MyHeaderState();
-}
-
-class _MyHeaderState extends State<MyHeader> {
-  @override
-  Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: MyClipper(),
-      child: Container(
-        padding: EdgeInsets.only(left: 40, top: 50, right: 20, bottom: 0),
-        height: 350,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              Color(0xFF3383CD),
-              Color(0xFF11249F),
-            ],
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Expanded(
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    top: 1,
-                    left: -10,
-                    bottom: 10,
-                    // ),
-                    child: Image.asset(
-                      "assets/images/sammy-finance.png",
-                      height: 250,
-                      width: 200,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    top: 90,
-                    // left: 10,
-                    right: 1,
-                    child: Text(
-                      "${widget.textTop} \n${widget.textBottom}",
-                      style: kHeadingTextStyle.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class MyClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0, size.height - 80);
-    path.quadraticBezierTo(
-        size.width / 2, size.height, size.width, size.height - 80);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
   }
 }
 
@@ -346,10 +282,12 @@ class SubcategoryCard extends StatelessWidget {
   final String image;
   final String title;
   final bool isActive;
+  final int progress;
   const SubcategoryCard({
     Key key,
     this.image,
     this.title,
+    this.progress,
     this.isActive = false,
   }) : super(key: key);
 
@@ -389,8 +327,8 @@ class SubcategoryCard extends StatelessWidget {
           ),
           SizedBox(height: 5),
           CircularStepProgressIndicator(
-            currentStep: 1, // FILL HERE
-            totalSteps: 3,
+            currentStep: progress, // FILL HERE
+            totalSteps: 5,
             stepSize: 5,
             selectedColor: Colors.greenAccent,
             unselectedColor: Colors.grey[200],
