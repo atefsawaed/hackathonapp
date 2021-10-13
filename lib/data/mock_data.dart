@@ -6,9 +6,9 @@ import 'package:hackathon_app/models/question.dart';
 Category banking_category = Category(
     id: "banking_category",
     image: "assets/icons/icons8-bank-building-48.png",
-    name: "בנקים",
+    name: "חשבון בנק",
     isActive: true,
-    questions: [banking_q1, banking_q2],
+    questions: [banking_q1, banking_q2, banking_q3],
     completionStatus: 4);
 
 Answer banking_q1_a1 = Answer(
