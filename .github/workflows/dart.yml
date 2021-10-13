@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Downgrade flutter
+        run: flutter downgrade 1.22.5
+        
       - name: Build APK
         run: flutter build apk
 
