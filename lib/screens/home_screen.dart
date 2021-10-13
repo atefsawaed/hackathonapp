@@ -42,10 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SubcategoryCard(
         image: category.image,
         title: category.name,
-        isActive: true,
+        isActive: category.isActive,
         progress: category.completionStatus,
       ),
       onTap: () {
+        if (!category.isActive) {
+          return;
+        }
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (_) => QuestionPage(
@@ -86,52 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       categoryGridItem(context, bank_card_category),
                       categoryGridItem(context, mortgage_category),
                       categoryGridItem(context, stocks_category),
-                      categoryGridItem(context, bonds_category),
-                      categoryGridItem(context, foreign_exchange_category),
-                      categoryGridItem(context, savings_category),
-                      categoryGridItem(context, life_insurance_category),
-                      categoryGridItem(context, car_insurance_category),
 
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-bank-cards-48.png",
-                      //   title: "כרטיסי אשראי",
-                      //   isActive: true,
-                      // ),
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-property-48.png",
-                      //   title: "משכנתא",
-                      //   isActive: true,
-                      // ),
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-stocks-48.png",
-                      //   title: "מניות",
-                      //   isActive: true,
-                      // ),
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-bonds-48.png",
-                      //   title: "אג״ח",
-                      //   isActive: true,
-                      // ),
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-bank-euro-48.png",
-                      //   title: "מט״ח",
-                      //   isActive: true,
-                      // ),
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-money-box-48.png",
-                      //   title: "חסכונות",
-                      //   isActive: true,
-                      // ),
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-heart-health-48.png",
-                      //   title: "ביטוח בריאות",
-                      //   isActive: true,
-                      // ),
-                      // SubcategoryCard(
-                      //   image: "assets/icons/icons8-car-insurance-48.png",
-                      //   title: "ביטוח רכב",
-                      //   isActive: true,
-                      // ),
+                      // categoryGridItem(context, foreign_exchange_category),
+                      categoryGridItem(context, kopat_gemel_category),
+                      categoryGridItem(context, payslip_category),
+                      categoryGridItem(context, maternity_leave_category),
+                      categoryGridItem(context, nitzul_shuaa_category),
+                      categoryGridItem(context, life_insurance_category),
+                      // categoryGridItem(context, car_insurance_category),
                     ],
                   ),
                 ),
@@ -316,16 +281,18 @@ class SubcategoryCard extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Image.asset(image, height: 50),
+          Image.asset(image, height: 40),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 15,
+              fontSize: 14,
             ),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 3),
           CircularStepProgressIndicator(
             currentStep: progress, // FILL HERE
             totalSteps: 5,

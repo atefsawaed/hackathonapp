@@ -4,6 +4,7 @@ import 'package:hackathon_app/models/question.dart';
 import 'package:hackathon_app/utils/size_config.dart';
 import 'package:hackathon_app/widgets/page_header.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 const kSecondaryColor = Color(0xFF8B94BC);
 const kGreenColor = Color(0xFF6AC259);
@@ -94,7 +95,7 @@ class _QuestionPageState extends State<QuestionPage> {
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.w700,
-                            color: Colors.blue),
+                            color: Colors.black87),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -107,9 +108,9 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: Text(
                           widget.category.questions[index].questionDescription,
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w400,
-                              color: Colors.grey[600]),
+                              color: Colors.grey[800]),
                         ),
                       ),
                     ),
@@ -153,7 +154,7 @@ class _QuestionPageState extends State<QuestionPage> {
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
       descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0),
-      pageColor: Colors.white,
+      pageColor: Colors.transparent,
       titlePadding: EdgeInsets.only(bottom: 10),
       imagePadding: EdgeInsets.zero,
     );
@@ -180,32 +181,46 @@ class _QuestionPageState extends State<QuestionPage> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: IntroductionScreen(
-        key: introKey,
-        pages: [
-          for (int i = 0; i < widget.category.questions.length; i++)
-            QuestionView(pageDecoration, i),
-        ],
-        onDone: () => _onIntroEnd(context),
-        showSkipButton: false,
-        showNextButton: false,
-        skipFlex: 0,
-        nextFlex: 0,
-        next: const Icon(Icons.arrow_forward),
-        done: const Text('סיום',
-            style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 15,
-                color: Colors.blueAccent)),
-        dotsDecorator: const DotsDecorator(
-          activeColor: Colors.blueAccent,
-          size: Size(10.0, 10.0),
-          color: Color(0xFFBDBDBD),
-          activeSize: Size(22.0, 10.0),
-          activeShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(25.0)),
+      body: Stack(
+        children: [
+          SvgPicture.asset(
+            'assets/images/question_background.svg',
+            alignment: Alignment.center,
+            allowDrawingOutsideViewBox: true,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
-        ),
+          IntroductionScreen(
+            globalBackgroundColor: Colors.transparent,
+            key: introKey,
+            pages: [
+              for (int i = 0; i < widget.category.questions.length; i++)
+                QuestionView(pageDecoration, i),
+            ],
+            onDone: () => _onIntroEnd(context),
+            showSkipButton: true,
+            showNextButton: false,
+            skipFlex: 0,
+            skip: Text("דלג", style: TextStyle(color: Colors.black)),
+            nextFlex: 0,
+            next: const Icon(Icons.arrow_forward),
+            done: const Text('סיום',
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
+                    color: Colors.blueAccent)),
+            dotsDecorator: const DotsDecorator(
+              activeColor: Colors.blueAccent,
+              size: Size(10.0, 10.0),
+              color: Color(0xFFBDBDBD),
+              activeSize: Size(22.0, 10.0),
+              activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -231,7 +246,7 @@ class AnswerOption extends StatelessWidget {
         margin: EdgeInsets.only(top: kDefaultPadding),
         padding: EdgeInsets.all(kDefaultPadding),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.lightBlueAccent),
+          border: Border.all(color: Colors.black87),
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
@@ -247,7 +262,7 @@ class AnswerOption extends StatelessWidget {
           children: [
             Text(
               "${index + 1}. $text",
-              style: TextStyle(color: Colors.lightBlueAccent, fontSize: 20),
+              style: TextStyle(color: Colors.black87, fontSize: 20),
             ),
             // Container(
             //   height: 26,

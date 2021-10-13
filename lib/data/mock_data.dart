@@ -63,7 +63,7 @@ Answer banking_q2_a4 = Answer(
 
 Question banking_q2 = Question(
   id: "banknig_q2",
-  levelTitle: "עמלות וריביות במשכנתא",
+  levelTitle: "סוג חשבון",
   questionTitle: "האם אתם מודעים לריביות ועמלות הקיימות במשכנתא?",
   questionDescription:
       "asdfasfdaflkgjsdfkljghklsdfjghklsdjglk;adfjhglk;sdfjhklfsgnbmklsfdgbnfgbfg\n\n\nlk;adjfgkljdflkgjdflkjghfslkjhlkdfsjh",
@@ -100,31 +100,47 @@ Category stocks_category = Category(
     id: "stocks_category",
     image: "assets/icons/icons8-stocks-48.png",
     name: "מניות",
-    isActive: true,
+    isActive: false,
     questions: [],
     completionStatus: 1);
 
-Category bonds_category = Category(
-    id: "bonds_category",
-    image: "assets/icons/icons8-bonds-48.png",
-    name: "אג״ח",
-    isActive: true,
-    questions: [],
-    completionStatus: 5);
-
-Category foreign_exchange_category = Category(
-    id: "foreign_exchange_category",
-    image: "assets/icons/icons8-bank-euro-48.png",
-    name: "מט״ח",
-    isActive: true,
+Category payslip_category = Category(
+    id: "payslip_category",
+    image: "assets/icons/icons8-tips-48.png",
+    name: "תלוש משכורת",
+    isActive: false,
     questions: [],
     completionStatus: 0);
 
-Category savings_category = Category(
-    id: "savings_category",
+// Category foreign_exchange_category = Category(
+//     id: "foreign_exchange_category",
+//     image: "assets/icons/icons8-money-box-48.png",
+//     name: "חסכון לכל ילד",
+//     isActive: true,
+//     questions: [],
+//     completionStatus: 0);
+
+Category kopat_gemel_category = Category(
+    id: "kopat_gemel_category",
     image: "assets/icons/icons8-money-box-48.png",
-    name: "מט״ח",
-    isActive: true,
+    name: "קופת גמל להשקעה",
+    isActive: false,
+    questions: [],
+    completionStatus: 0);
+
+Category maternity_leave_category = Category(
+    id: "maternity_leave_category",
+    image: "assets/icons/icons8-mother's-health-48.png",
+    name: "חופשת לידה",
+    isActive: false,
+    questions: [],
+    completionStatus: 0);
+
+Category nitzul_shuaa_category = Category(
+    id: "nitzul_shuaa_category",
+    image: "assets/icons/icons8-elderly-person-48.png",
+    name: "ניצולי שואה",
+    isActive: false,
     questions: [],
     completionStatus: 0);
 
@@ -132,7 +148,7 @@ Category life_insurance_category = Category(
     id: "life_insurance_category",
     image: "assets/icons/icons8-heart-health-48.png",
     name: "ביטוח בריאות",
-    isActive: true,
+    isActive: false,
     questions: [],
     completionStatus: 0);
 
@@ -140,6 +156,6 @@ Category car_insurance_category = Category(
     id: "car_insurance_category",
     image: "assets/icons/icons8-car-insurance-48.png",
     name: "ביטוח רכב",
-    isActive: true,
+    isActive: false,
     questions: [],
     completionStatus: 0);
