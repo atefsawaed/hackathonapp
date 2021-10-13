@@ -118,7 +118,7 @@ Answer intro_q1_a4 = Answer(
 
 Answer intro_q2_a2 = Answer(
   id: "intro_q2_a2",
-  answerTitle: "נשוי או מוכר בציבור",
+  answerTitle: "נשוי או ידוע בציבור",
   tags: ["married"],
 );
 
@@ -154,7 +154,7 @@ Answer intro_q3_a3 = Answer(
 
  IntroQuestion intro_q3 = IntroQuestion(
     id: "intro_q3"
-    questionTitle: "מה המצב המשפחתי שלך?",
+    questionTitle: "האם יש לך ילדים?",
     answers: [intro_q3_a1, intro_q3_a2, intro_q3_a3]
   )
 
