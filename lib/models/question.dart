@@ -7,7 +7,7 @@ class Question {
   String levelTitle;
   String questionTitle;
   String questionDescription;
-  double sortScore;
+  int sortScore;
   List<String> categories;
   List<String> filters;
   List<Answer> answers;

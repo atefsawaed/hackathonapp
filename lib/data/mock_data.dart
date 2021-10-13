@@ -6,19 +6,21 @@ import 'package:hackathon_app/models/question.dart';
 Category banking_category = Category(
     id: "banking_category",
     image: "assets/icons/icons8-bank-building-48.png",
-    name: "בנקים",
+    name: "חשבון בנק",
     isActive: true,
-    questions: [banking_q1, banking_q2],
+    questions: [banking_q1, banking_q2, banking_q3],
     completionStatus: 4);
 
 Answer banking_q1_a1 = Answer(
   id: "banking_q1_a1",
   answerTitle: "כן",
+  tags: ["bank_tag1"]
 );
 
 Answer banking_q1_a2 = Answer(
   id: "banking_q1_a2",
   answerTitle: "דלג",
+  tags: ["bank_tag1"]
 );
 
 Question banking_q1 = Question(
@@ -29,7 +31,7 @@ Question banking_q1 = Question(
       "סיווג חשבון לפי סטטוס מאפשר לכם להנות מהטבות ותנאים מותאמות לסטטוס. לעיתים זה עשוי להיות משמעותי מבחינת עמלות והטבות. יש לוודא שסיווג החשבון תואם את סטטוס החיים ויש לעדכנו מדי פעם. ",
   categories: ["bank"],
   sortScore: 10,
-  filters: ["filter_1, filter_2"],
+  filters: [],
   answers: [banking_q1_a1, banking_q1_a2], // From above
 );
 
@@ -38,11 +40,13 @@ Question banking_q1 = Question(
 Answer banking_q2_a1 = Answer(
   id: "banking_q2_a1",
   answerTitle: "כן",
+  tags: ["bank_tag2"]
 );
 
 Answer banking_q2_a2 = Answer(
   id: "banking_q2_a2",
   answerTitle: "דלג",
+  tags: ["bank_tag2"]
 );
 
 Question banking_q2 = Question(
@@ -53,7 +57,7 @@ Question banking_q2 = Question(
       "הקצאת מסגרת אשראי לעיתים כרוחה בעלויות של ריבית ועמלה. כשאין צורך, מומלץ למזער. מצד שני, לעיתים צפויות הוצאות גדולות ובשביל להימנע מעלויות ריבית גבוהות יש להגדיר מסגרת אשראי מתאימה עם הבנק מבעוד מועד. ",
   categories: ["bank"],
   sortScore: 20,
-  filters: ["filter_1, filter_2"],
+  filters: ["bank_tag1"],
   answers: [banking_q2_a1, banking_q2_a2], // From above
 );
 
@@ -76,8 +80,8 @@ Question banking_q3 = Question(
   questionDescription:
       "ניהול חשבון בנק כולל במקרים רבים עמלות שונות ומגוונות. בהתאם לסטטוס ובעיקר בהתאם לגודל המשכורת/ות הנכנסות, ניתן לקבל הנחות משמעותיות בעמלות, ואף להגיע לחשבון ללא עמלות בכלל. בכל מקרה יש לבדוק מדי שנה את עלויות העמלות ולברר עם הבנקאי איפה ניתן להוזיל. בשביל לראות בצורה הטובה ביותר סיכום של תשלומי העמלות, ניתן להוציא (אפילו דרך האינטרנט) טופס שנקרא ת.ז. בנקאית ושם ניתן לראות ריכוז של כל תשלומי העמלות. ",
   categories: ["bank"],
-  sortScore: 20,
-  filters: ["filter_1, filter_2"],
+  sortScore: 30,
+  filters: ["bank_tag1", "bank_tag2"],
   answers: [banking_q3_a1, banking_q3_a2], // From above
 );
 
