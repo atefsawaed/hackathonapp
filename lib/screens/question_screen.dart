@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:hackathon_app/models/category.dart';
 import 'package:hackathon_app/models/question.dart';
+import 'package:hackathon_app/screens/loading_action_items.dart';
 import 'package:hackathon_app/utils/size_config.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +45,6 @@ class _QuestionPageState extends State<QuestionPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
     // var answeredTags = HashSet<String>();
@@ -58,7 +58,6 @@ class _QuestionPageState extends State<QuestionPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     controller.dispose();
     super.dispose();
   }
@@ -113,7 +112,6 @@ class _QuestionPageState extends State<QuestionPage> {
 
   PageViewModel QuestionView(PageDecoration pageDecoration, int index) {
     return PageViewModel(
-      // title: widget.category.questions[index].questionTitle,
       titleWidget: Container(),
       bodyWidget: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,10 +178,16 @@ class _QuestionPageState extends State<QuestionPage> {
                     text:
                         widget.category.questions[index].answers[i].answerTitle,
                     press: () {
-                      introKey.currentState.controller.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeInOut);
-                      // TODO: Handle last question
+                      if (index == widget.category.questions.length - 1) {
+                        // TODO: Handle last question
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => LoadingAIScreen()),
+                        );
+                      } else {
+                        introKey.currentState.controller.nextPage(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.easeInOut);
+                      }
                     },
                   ),
                 ),
@@ -244,6 +248,7 @@ class _QuestionPageState extends State<QuestionPage> {
           Padding(
             padding: const EdgeInsets.only(top: 50),
             child: IntroductionScreen(
+              freeze: true,
               globalBackgroundColor: Colors.transparent,
               key: introKey,
               pages: [
@@ -265,7 +270,7 @@ class _QuestionPageState extends State<QuestionPage> {
                 activeColor: Colors.blueGrey,
                 size: Size(10.0, 10.0),
                 color: Color(0xFFBDBDBD),
-                activeSize: Size(22.0, 10.0),
+                activeSize: Size(10.0, 10.0),
                 activeShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
@@ -283,7 +288,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     //   minHeight: 25,
                     // ),
                     icon: Icon(
-                      Icons.arrow_back_ios,
+                      Icons.close,
                       color: Colors.black,
                       size: 22,
                     ),

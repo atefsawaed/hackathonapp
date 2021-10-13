@@ -1,3 +1,4 @@
+import 'package:hackathon_app/models/action_item.dart';
 import 'package:hackathon_app/models/answer.dart';
 import 'package:hackathon_app/models/category.dart';
 import 'package:hackathon_app/models/question.dart';
@@ -162,3 +163,15 @@ Category children_savings_category = Category(
     isActive: false,
     questions: [],
     completionStatus: 0);
+
+ActionItem ai1 = ActionItem(
+    id: "ai1",
+    title: "המלצה מספר 1",
+    description:
+        "המלצה המלצה טקסט המצלה המלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלה");
+
+ActionItem ai2 = ActionItem(
+    id: "ai2",
+    title: "המלצה מספר 2",
+    description:
+        "המלצה המלצה טקסט המצלה המלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלה");

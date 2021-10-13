@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hackathon_app/data/mock_data.dart';
 import 'package:hackathon_app/models/category.dart';
+import 'package:hackathon_app/screens/action_items_screen.dart';
 import 'package:hackathon_app/screens/question_screen.dart';
 
 import 'package:hackathon_app/utils/constants.dart';
@@ -54,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (_) => QuestionPage(
               category: category,
             ),
+            // builder: (_) => ActionItemScreen(actionItems: [ai1, ai2]),
           ),
         );
       },
