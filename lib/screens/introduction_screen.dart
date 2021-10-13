@@ -59,6 +59,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           image: _buildImage('intro_3', 250),
           decoration: pageDecoration,
         ),
+        PageViewModel(
+          title: "3 שאלות הכרות ונוכל להתחיל",
+          body:
+              "על פי המידע שנקבל מכם, אנו נתאים עבורכם המלצות שיעזרו לכן להתנהל כלכלית!",
+          image: _buildImage('intro_3', 250),
+          decoration: pageDecoration,
+        )
       ],
       onDone: () => _onIntroEnd(context),
       //onSkip: () => _onIntroEnd(context), // You can override onSkip callback

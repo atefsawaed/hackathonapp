@@ -80,34 +80,10 @@ Question banking_q2 = Question(
 );
 
 // Introduction Questions
-Answer intro_q1_a1 = Answer(
-  id: "intro_q1_a1",
-  answerTitle: "0-18",
-  tags: ["child"],
-);
-
-Answer intro_q1_a2 = Answer(
-  id: "intro_q1_a2",
-  answerTitle: "18-25",
-  tags: ["young_adult"],
-);
-
-Answer intro_q1_a3 = Answer(
-  id: "intro_q1_a3",
-  answerTitle: "25 - גיל הפנסיה",
-  tags: ["adult"],
-);
-
-Answer intro_q1_a4 = Answer(
-  id: "intro_q1_a4",
-  answerTitle: "מעל גיל הפנסיה",
-  tags: ["senior"],
-)
-
  IntroQuestion intro_q1 = IntroQuestion(
     id: "intro_q1"
-    questionTitle: "?מהו טווח הגילאים שלך",
-    answers: [intro_q1_a1, intro_q1_a2, intro_q1_a3, intro_q1_a4]
+    questionTitle: "?מהי שנת הלידה שלך",
+    answerType: YearSelector,
   )
 
   Answer intro_q2_a1 = Answer(
