@@ -20,6 +20,8 @@ jobs:
       
       - name: Flutter action
         uses: subosito/flutter-action@v1.5.3
+        with:
+          flutter-version: '1.22.5'
 
       # Note: This workflow uses the latest stable version of the Dart SDK.
       # You can specify other versions if desired, see documentation here:
@@ -30,9 +32,6 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Downgrade flutter
-        run: flutter downgrade 1.22.5
-        
       - name: Build APK
         run: flutter build apk
 
