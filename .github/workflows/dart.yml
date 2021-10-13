@@ -26,6 +26,11 @@ jobs:
         with:
           flutter-version: '1.22.5'
 
+      - uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r21e
+      #- runs: ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk NDK_APPLICATION_MK=./Application.mk
+
       # Note: This workflow uses the latest stable version of the Dart SDK.
       # You can specify other versions if desired, see documentation here:
       # https://github.com/dart-lang/setup-dart/blob/main/README.md
