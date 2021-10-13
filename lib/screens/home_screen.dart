@@ -80,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: GridView.count(
                     shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     addRepaintBoundaries: false,
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 20,
