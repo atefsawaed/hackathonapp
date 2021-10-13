@@ -7,32 +7,32 @@ import 'package:hackathon_app/models/intro_question.dart';
 Category banking_category = Category(
     id: "banking_category",
     image: "assets/icons/icons8-bank-building-48.png",
-    name: "בנקים",
+    name: "חשבון בנק",
     isActive: true,
-    questions: [banking_q1, banking_q2],
+    questions: [banking_q1, banking_q2, banking_q3],
     completionStatus: 4);
 
 Answer banking_q1_a1 = Answer(
   id: "banking_q1_a1",
   answerTitle: "כן",
-  tags: ["banking", "saving"],
+  tags: ["bank_tag1"]
 );
 
 Answer banking_q1_a2 = Answer(
   id: "banking_q1_a2",
-  answerTitle: "לא",
-  tags: ["education", "no_banking"],
+  answerTitle: "דלג",
+  tags: ["bank_tag1"]
 );
 
 Question banking_q1 = Question(
   id: "banknig_q1",
-  levelTitle: "חסכון פנסיוני",
-  questionTitle: "האם אתם חוסכים לפנסיה?",
+  levelTitle: "סיווג חשבון",
+  questionTitle: "האם סיווג החשבון שלך תואם את סטטוס החיים?",
   questionDescription:
-      "תיאור לךשגכחעךלףגשכעחלךףגכדחיעלךףדכגחילךףגכחנלךדכגחידכךחעיךלדחכעיךלףחדכלךעחילךףכדעחיךףלדכעיחדכךףעלחיךדלכעח",
+      "סיווג חשבון לפי סטטוס מאפשר לכם להנות מהטבות ותנאים מותאמות לסטטוס. לעיתים זה עשוי להיות משמעותי מבחינת עמלות והטבות. יש לוודא שסיווג החשבון תואם את סטטוס החיים ויש לעדכנו מדי פעם. ",
   categories: ["bank"],
-  sortScore: 9,
-  filters: ["filter_1, filter_2"],
+  sortScore: 10,
+  filters: [],
   answers: [banking_q1_a1, banking_q1_a2], // From above
 );
 
@@ -41,42 +41,49 @@ Question banking_q1 = Question(
 Answer banking_q2_a1 = Answer(
   id: "banking_q2_a1",
   answerTitle: "כן",
-  tags: ["banking", "saving"],
+  tags: ["bank_tag2"]
 );
 
 Answer banking_q2_a2 = Answer(
   id: "banking_q2_a2",
-  answerTitle: "לא",
-  tags: ["education", "no_banking"],
-);
-
-Answer banking_q2_a3 = Answer(
-  id: "banking_q2_a3",
-  answerTitle: "סבבה",
-  tags: ["education", "no_banking"],
-);
-
-Answer banking_q2_a4 = Answer(
-  id: "banking_q2_a4",
-  answerTitle: "לא יודע",
-  tags: ["education", "no_banking"],
+  answerTitle: "דלג",
+  tags: ["bank_tag2"]
 );
 
 Question banking_q2 = Question(
   id: "banknig_q2",
-  levelTitle: "סוג חשבון",
-  questionTitle: "האם אתם מודעים לריביות ועמלות הקיימות במשכנתא?",
+  levelTitle: "הקצאת מסגרת אשראי",
+  questionTitle: "האם מסגרת האשראי שלך תואמת את הצרכים? ",
   questionDescription:
-      "asdfasfdaflkgjsdfkljghklsdfjghklsdjglk;adfjhglk;sdfjhklfsgnbmklsfdgbnfgbfg\n\n\nlk;adjfgkljdflkgjdflkjghfslkjhlkdfsjh",
+      "הקצאת מסגרת אשראי לעיתים כרוחה בעלויות של ריבית ועמלה. כשאין צורך, מומלץ למזער. מצד שני, לעיתים צפויות הוצאות גדולות ובשביל להימנע מעלויות ריבית גבוהות יש להגדיר מסגרת אשראי מתאימה עם הבנק מבעוד מועד. ",
   categories: ["bank"],
-  sortScore: 9,
-  filters: ["filter_1, filter_2"],
-  answers: [
-    banking_q2_a1,
-    banking_q2_a2,
-    banking_q2_a3,
-    banking_q2_a4
-  ], // From above
+  sortScore: 20,
+  filters: ["bank_tag1"],
+  answers: [banking_q2_a1, banking_q2_a2], // From above
+);
+
+// Question 3
+
+Answer banking_q3_a1 = Answer(
+  id: "banking_q3_a1",
+  answerTitle: "כן",
+);
+
+Answer banking_q3_a2 = Answer(
+  id: "banking_q3_a2",
+  answerTitle: "דלג",
+);
+
+Question banking_q3 = Question(
+  id: "banknig_q3",
+  levelTitle: "עמלות",
+  questionTitle: "האם קיבלת אם הטבת העמלות הטובה ביותר עבורך?",
+  questionDescription:
+      "ניהול חשבון בנק כולל במקרים רבים עמלות שונות ומגוונות. בהתאם לסטטוס ובעיקר בהתאם לגודל המשכורת/ות הנכנסות, ניתן לקבל הנחות משמעותיות בעמלות, ואף להגיע לחשבון ללא עמלות בכלל. בכל מקרה יש לבדוק מדי שנה את עלויות העמלות ולברר עם הבנקאי איפה ניתן להוזיל. בשביל לראות בצורה הטובה ביותר סיכום של תשלומי העמלות, ניתן להוציא (אפילו דרך האינטרנט) טופס שנקרא ת.ז. בנקאית ושם ניתן לראות ריכוז של כל תשלומי העמלות. ",
+  categories: ["bank"],
+  sortScore: 30,
+  filters: ["bank_tag1", "bank_tag2"],
+  answers: [banking_q3_a1, banking_q3_a2], // From above
 );
 
 // Introduction Questions

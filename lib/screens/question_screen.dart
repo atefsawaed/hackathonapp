@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:hackathon_app/models/category.dart';
 import 'package:hackathon_app/models/question.dart';
@@ -46,6 +47,13 @@ class _QuestionPageState extends State<QuestionPage> {
     // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
+    // var answeredTags = HashSet<String>();
+    // answeredTags.add("bank_tag1");
+    // answeredTags.add("bank_tag2");
+    // answeredTags.add("other");
+    // var result = getNextQuestion(widget.category, 0, answeredTags);
+    // List<Question> questions = result[0];
+    // int lastQuestionIndex = result[1];
   }
 
   @override
@@ -72,6 +80,35 @@ class _QuestionPageState extends State<QuestionPage> {
       child: Image.asset('assets/$assetName.png', width: width),
       alignment: Alignment.bottomCenter,
     );
+  }
+
+  bool isQuestionAnswered(Question question) {
+    // TODO: implement this
+    return false;
+  }
+
+  List getNextQuestion(
+      Category category, int currentQuestion, HashSet<String> answeredTags) {
+    List<Question> questions = [];
+    int lastQuestion = currentQuestion + 1;
+    for (var i = lastQuestion; i < category.questions.length; i++) {
+      var question = category.questions[i];
+      if (questions.isNotEmpty &&
+          questions.last.sortScore != question.sortScore) {
+        // We assume that all questions in the list are sorted by sortScore.
+        // If the next question's sortScore differs, it means that we have no more questions to add
+        break;
+      }
+
+      if (isQuestionAnswered(question))
+        continue; // Don't show already answered question
+
+      if (answeredTags.containsAll(question.filters)) {
+        questions.add(question);
+        lastQuestion = i;
+      }
+    }
+    return [questions, lastQuestion];
   }
 
   PageViewModel QuestionView(PageDecoration pageDecoration, int index) {
