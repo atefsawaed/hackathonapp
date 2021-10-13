@@ -166,8 +166,8 @@ Question cc_s1 = Question(
 
 // Summary 2
 
-Question cc_s1 = Question(
-  id: "cc_s1",
+Question cc_s2 = Question(
+  id: "cc_s2",
   levelTitle: "יש לנו המלצות",
   questionTitle: "",
   questionDescription:
