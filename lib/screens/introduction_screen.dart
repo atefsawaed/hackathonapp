@@ -18,6 +18,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     );
   }
 
+
   Widget _buildImage(String assetName, double width) {
     return Align(
       child: Image.asset('assets/$assetName.png', width: width),
@@ -54,16 +55,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
         PageViewModel(
           title: "המלצות מותאמות אישית!",
-          body:
-              "על פי המידע שנקבל מכם, אנו נתאים עבורכם המלצות שיעזרו לכן להתנהל כלכלית!",
+           body:
+              "על פי המידע שנקבל מכם, אנו נתאים עבורכם המלצות שיעזרו לכם להתנהל כלכלית!",
           image: _buildImage('intro_3', 250),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "3 שאלות הכרות ונוכל להתחיל",
-          body:
-              "על פי המידע שנקבל מכם, אנו נתאים עבורכם המלצות שיעזרו לכן להתנהל כלכלית!",
-          image: _buildImage('intro_3', 250),
+          children:[
+              
+          ],
+          
           decoration: pageDecoration,
         )
       ],
