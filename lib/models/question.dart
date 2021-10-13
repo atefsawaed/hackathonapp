@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:hackathon_app/models/answer.dart';
 
 class Question {
-  String id;
-  String levelTitle;
-  String questionTitle;
-  String questionDescription;
-  int sortScore;
-  List<String> categories;
-  List<String> filters;
-  List<Answer> answers;
+  final String id;
+  final String levelTitle;
+  final String questionTitle;
+  final String questionDescription;
+  final int sortScore;
+  final List<String> categories;
+  final List<String> filters;
+  final List<Answer> answers;
 
   Question({
     @required this.id,
@@ -22,4 +22,15 @@ class Question {
     @required this.answers,
     @required this.filters,
   });
+
+  Question.fromJson(Map<String, Object> json)
+      : this(
+            id: json['id'] as String,
+            levelTitle: json['level_title'] as String,
+            questionTitle: json['question_title'] as String,
+            questionDescription: json['questionDescription'] as String,
+            categories: json['categories'] != null ? List.from(json['categories']) : [],
+            sortScore: json['sortNumber'] as int,
+            filters: json['filters'] != null ? List.from(json['filters']) : [],
+            answers: Answer.fromQuestionJson(json));
 }

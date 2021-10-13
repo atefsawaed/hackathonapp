@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hackathon_app/data/mock_data.dart';
 import 'package:hackathon_app/models/category.dart';
+import 'package:hackathon_app/models/question.dart';
 import 'package:hackathon_app/screens/question_screen.dart';
 
 import 'package:hackathon_app/utils/constants.dart';
 import 'package:hackathon_app/widgets/page_header.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,12 +18,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final controller = ScrollController();
   double offset = 0;
+  CollectionReference<Question> collection;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    collection = firestore.collection("questions").withConverter(
+        fromFirestore: (snapshot, _) => Question.fromJson(snapshot.data()),
+        toFirestore: null);
   }
 
   @override
@@ -51,9 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
         }
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => QuestionPage(
-              category: category,
-            ),
+            builder: (_) =>
+                QuestionPage(category: category, collection: collection),
           ),
         );
       },

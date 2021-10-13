@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "691291279412",
+    "project_id": "financeguide-e3344",
+    "storage_bucket": "financeguide-e3344.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691291279412:android:60800359926b6fefc43a61",
+        "android_client_info": {
+          "package_name": "com.example.hackathon_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691291279412-qurgf4mfig0spnf6oenftff3begllps2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDobXDT_e3KpR3deTX8oHUwikR14mXqrws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691291279412-qurgf4mfig0spnf6oenftff3begllps2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
