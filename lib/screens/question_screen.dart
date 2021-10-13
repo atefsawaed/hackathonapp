@@ -6,6 +6,7 @@ import 'package:hackathon_app/utils/size_config.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 const kSecondaryColor = Color(0xFF8B94BC);
 const kGreenColor = Color(0xFF6AC259);
@@ -155,13 +156,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     child: Center(
                       child: Container(
                         height: 200,
-                        child: Text(
-                          widget.category.questions[index].questionDescription,
-                          style: TextStyle(
-                              fontSize: 21,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey[800]),
-                        ),
+                        child: Markdown(data: widget.category.questions[index].questionDescription),
                       ),
                     ),
                   ),
