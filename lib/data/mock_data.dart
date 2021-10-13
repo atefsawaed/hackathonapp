@@ -75,13 +75,61 @@ Question banking_q3 = Question(
 
 // Other categories
 
-Category bank_card_category = Category(
-    id: "bank_card_category",
+Category credit_card_category = Category(
+    id: "credit_card_category",
     image: "assets/icons/icons8-bank-cards-48.png",
     name: "כרטיסי אשראי",
     isActive: true,
-    questions: [],
+    questions: [cc_q1, cc_q2],
     completionStatus: 3);
+
+// Question 1
+
+Answer cc_q1_a1 = Answer(
+  id: "cc_q1_a1",
+  answerTitle: "כן",
+);
+
+Answer cc_q1_a2 = Answer(
+  id: "cc_q1_a2",
+  answerTitle: "דלג",
+);
+
+Question cc_q1 = Question(
+  id: "cc_q1",
+  levelTitle: "דמי שימוש",
+  questionTitle: "האם וודאת שאין חיוב של דמי שימוש בכל כרטיסי האשראי שברשותך?",
+  questionDescription:
+      "כרטיסי אשראי לרוב מונפקים בהתחלה ללא דמי שימוש חודשיים, אבל לעיתים ביטול דמי השימוש מוגבל מראש לשנה, וכעבור שנה מתחילים להופיע חיובים של דמי שימוש. ברוב המקרים ניתן לבטל לחלוטין את דמי השימוש על ידי פנייה לחברת האשראי בבקשה לביטול דמי השימוש. במקרים אחרים ניתן פשוט לבטל את הכרטיס ולהנפיק כרטיס חדש. יש לבדוק לפחות אחת לרבעון שאין חיוב של דמי שימוש בכל כרטיסי האשראי. ",
+  categories: ["cc"],
+  sortScore: 30,
+  filters: ["cc_tag1", "cc_tag2"],
+  answers: [cc_q1_a1, cc_q1_a2], // From above
+);
+
+// Question 2
+
+Answer cc_q2_a1 = Answer(
+  id: "cc_q2_a1",
+  answerTitle: "כן",
+);
+
+Answer cc_q2_a2 = Answer(
+  id: "cc_q2_a2",
+  answerTitle: "דלג",
+);
+
+Question cc_q2 = Question(
+  id: "cc_q2",
+  levelTitle: "עמלות מט""ח",
+  questionTitle: "האם ידועים לך דמי עמלת המרת המט""ח בכל כרטיסי האשראי שברשותך?",
+  questionDescription:
+      "כאשר מתבצעות רכישות במט""ח בכרטיסי אשראי, חברת האשראי עלולה לגבות עמלה. עמלה זו מתבטאת באחוז מסכום העיסקה, ולכן במקרה של רכישה גדולה זה עלול להיות משמעותי. אם אתם מבצעים רכישות במט""ח, כדאי לדעת מראש באיזה כרטיס הכי משתלם לבצע את העיסקה, והוא הכרטיס בוא נגבים עמלות המרת מט""ח הנמוכים ביותר. במקרים רבים ניתן להגיע להסדר של 0% עמלת מט""ח בכרטיס אשראי. ",
+  categories: ["cc"],
+  sortScore: 30,
+  filters: ["cc_tag1", "cc_tag2"],
+  answers: [cc_q2_a1, cc_q2_a2], // From above
+);
 
 Category mortgage_category = Category(
     id: "mortgage_category",
