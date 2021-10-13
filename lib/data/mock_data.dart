@@ -1,6 +1,7 @@
 import 'package:hackathon_app/models/answer.dart';
 import 'package:hackathon_app/models/category.dart';
 import 'package:hackathon_app/models/question.dart';
+import 'package:hackathon_app/models/intro_question.dart';
 
 // Bank category
 Category banking_category = Category(
@@ -77,6 +78,87 @@ Question banking_q2 = Question(
     banking_q2_a4
   ], // From above
 );
+
+// Introduction Questions
+Answer intro_q1_a1 = Answer(
+  id: "intro_q1_a1",
+  answerTitle: "0-18",
+  tags: ["child"],
+);
+
+Answer intro_q1_a2 = Answer(
+  id: "intro_q1_a2",
+  answerTitle: "18-25",
+  tags: ["young_adult"],
+);
+
+Answer intro_q1_a3 = Answer(
+  id: "intro_q1_a3",
+  answerTitle: "25 - גיל הפנסיה",
+  tags: ["adult"],
+);
+
+Answer intro_q1_a4 = Answer(
+  id: "intro_q1_a4",
+  answerTitle: "מעל גיל הפנסיה",
+  tags: ["senior"],
+)
+
+ IntroQuestion intro_q1 = IntroQuestion(
+    id: "intro_q1"
+    questionTitle: "?מהו טווח הגילאים שלך",
+    answers: [intro_q1_a1, intro_q1_a2, intro_q1_a3, intro_q1_a4]
+  )
+
+  Answer intro_q2_a1 = Answer(
+  id: "intro_q2_a1",
+  answerTitle: "רווק",
+  tags: ["bachelor"],
+);
+
+Answer intro_q2_a2 = Answer(
+  id: "intro_q2_a2",
+  answerTitle: "נשוי או מוכר בציבור",
+  tags: ["married"],
+);
+
+Answer intro_q2_a3 = Answer(
+  id: "intro_q2_a3",
+  answerTitle: "אלמן",
+  tags: ["widower"],
+);
+
+ IntroQuestion intro_q2 = IntroQuestion(
+    id: "intro_q2"
+    questionTitle: "מה המצב המשפחתי שלך?",
+    answers: [intro_q2_a1, intro_q2_a2, intro_q2_a3]
+  )
+
+  Answer intro_q3_a1 = Answer(
+  id: "intro_q3_a1",
+  answerTitle: "כן, יש ילדים עד גיל 18",
+  tags: ["has_young_children"],
+);
+
+Answer intro_q3_a2 = Answer(
+  id: "intro_q3_a2",
+  answerTitle: "כן, כל הילדים מעל גיל 18",
+  tags: ["has_old_children"],
+);
+
+Answer intro_q3_a3 = Answer(
+  id: "intro_q3_a3",
+  answerTitle: "אין לי ילדים",
+  tags: ["no_children"],
+);
+
+ IntroQuestion intro_q3 = IntroQuestion(
+    id: "intro_q3"
+    questionTitle: "מה המצב המשפחתי שלך?",
+    answers: [intro_q3_a1, intro_q3_a2, intro_q3_a3]
+  )
+
+  
 
 // Other categories
 
@@ -159,3 +241,6 @@ Category car_insurance_category = Category(
     isActive: false,
     questions: [],
     completionStatus: 0);
+
+
+  
