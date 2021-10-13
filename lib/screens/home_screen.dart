@@ -275,14 +275,15 @@ class SubcategoryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Image.asset(image, height: 40),
-          Text(
+          FittedBox(
+              child: Text(
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
-          ),
+          )),
           SizedBox(height: 3),
           CircularStepProgressIndicator(
             currentStep: progress, // FILL HERE
