@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:hackathon_app/models/category.dart';
+import 'package:hackathon_app/models/question.dart';
 import 'package:hackathon_app/utils/size_config.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';

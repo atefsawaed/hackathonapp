@@ -11,17 +11,11 @@ Category banking_category = Category(
     questions: [banking_q1, banking_q2, banking_q3],
     completionStatus: 4);
 
-Answer banking_q1_a1 = Answer(
-  id: "banking_q1_a1",
-  answerTitle: "כן",
-  tags: ["bank_tag1"]
-);
+Answer banking_q1_a1 =
+    Answer(id: "banking_q1_a1", answerTitle: "כן", tags: ["bank_tag1"]);
 
-Answer banking_q1_a2 = Answer(
-  id: "banking_q1_a2",
-  answerTitle: "דלג",
-  tags: ["bank_tag1"]
-);
+Answer banking_q1_a2 =
+    Answer(id: "banking_q1_a2", answerTitle: "דלג", tags: ["bank_tag1"]);
 
 Question banking_q1 = Question(
   id: "banknig_q1",
@@ -37,17 +31,11 @@ Question banking_q1 = Question(
 
 // Question 2
 
-Answer banking_q2_a1 = Answer(
-  id: "banking_q2_a1",
-  answerTitle: "כן",
-  tags: ["bank_tag2"]
-);
+Answer banking_q2_a1 =
+    Answer(id: "banking_q2_a1", answerTitle: "כן", tags: ["bank_tag2"]);
 
-Answer banking_q2_a2 = Answer(
-  id: "banking_q2_a2",
-  answerTitle: "דלג",
-  tags: ["bank_tag2"]
-);
+Answer banking_q2_a2 =
+    Answer(id: "banking_q2_a2", answerTitle: "דלג", tags: ["bank_tag2"]);
 
 Question banking_q2 = Question(
   id: "banknig_q2",
