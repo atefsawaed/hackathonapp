@@ -54,10 +54,7 @@ Question banking_q2 = Question(
   categories: ["bank"],
   sortScore: 20,
   filters: ["filter_1, filter_2"],
-  answers: [
-    banking_q2_a1,
-    banking_q2_a2
-  ], // From above
+  answers: [banking_q2_a1, banking_q2_a2], // From above
 );
 
 // Question 3
@@ -81,10 +78,7 @@ Question banking_q3 = Question(
   categories: ["bank"],
   sortScore: 20,
   filters: ["filter_1, filter_2"],
-  answers: [
-    banking_q3_a1,
-    banking_q3_a2
-  ], // From above
+  answers: [banking_q3_a1, banking_q3_a2], // From above
 );
 
 // Other categories
@@ -165,6 +159,14 @@ Category car_insurance_category = Category(
     id: "car_insurance_category",
     image: "assets/icons/icons8-car-insurance-48.png",
     name: "ביטוח רכב",
+    isActive: false,
+    questions: [],
+    completionStatus: 0);
+
+Category children_savings_category = Category(
+    id: "children_savings_category",
+    image: "assets/icons/give-money-2.png",
+    name: "חסכון לכל ילד",
     isActive: false,
     questions: [],
     completionStatus: 0);

@@ -62,7 +62,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       ],
       onDone: () => _onIntroEnd(context),
       //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
-      showSkipButton: false,
+      skip: Text("דלג", style: TextStyle(color: Colors.black)),
+
+      showSkipButton: true,
       skipFlex: 0,
       nextFlex: 0,
       // skip: const Text('Skip'),

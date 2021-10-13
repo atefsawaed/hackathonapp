@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_app/models/category.dart';
-import 'package:hackathon_app/models/question.dart';
 import 'package:hackathon_app/utils/size_config.dart';
-import 'package:hackathon_app/widgets/page_header.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_animated_button/flutter_animated_button.dart';
 
 const kSecondaryColor = Color(0xFF8B94BC);
 const kGreenColor = Color(0xFF6AC259);
@@ -17,7 +16,7 @@ const kPrimaryGradient = LinearGradient(
   end: Alignment.centerRight,
 );
 
-const double kDefaultPadding = 20.0;
+const double kDefaultPadding = 15.0;
 
 class QuestionPage extends StatefulWidget {
   // final String categoryName;
@@ -76,17 +75,30 @@ class _QuestionPageState extends State<QuestionPage> {
 
   PageViewModel QuestionView(PageDecoration pageDecoration, int index) {
     return PageViewModel(
-      // title: widget.questions[index].questionTitle,
+      // title: widget.category.questions[index].questionTitle,
       titleWidget: Container(),
       bodyWidget: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-              height: 300,
+              height: 320,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Center(
+                    child: Container(
+                      height: 25,
+                      child: Text(
+                        widget.category.questions[index].levelTitle,
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blueGrey),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
                   Center(
                     child: Container(
                       height: 80,
@@ -101,14 +113,14 @@ class _QuestionPageState extends State<QuestionPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 15, left: 50),
                     child: Center(
                       child: Container(
                         height: 200,
                         child: Text(
                           widget.category.questions[index].questionDescription,
                           style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 21,
                               fontWeight: FontWeight.w400,
                               color: Colors.grey[800]),
                         ),
@@ -160,27 +172,27 @@ class _QuestionPageState extends State<QuestionPage> {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.grey[600]),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        actionsIconTheme: IconThemeData(color: Colors.black),
-        centerTitle: true,
-        title: Row(
-          children: [
-            Image.asset(widget.category.image, height: 40),
-            SizedBox(width: 5),
-            Text(
-              widget.category.name,
-              style: TextStyle(
-                  fontFamily: Theme.of(context).textTheme.headline6.fontFamily,
-                  color: Colors.black),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.white,
-      ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     icon: Icon(Icons.arrow_back, color: Colors.grey[600]),
+      //     onPressed: () => Navigator.of(context).pop(),
+      //   ),
+      //   actionsIconTheme: IconThemeData(color: Colors.black),
+      //   centerTitle: true,
+      //   title: Row(
+      //     children: [
+      //       Image.asset(widget.category.image, height: 40),
+      //       SizedBox(width: 5),
+      //       Text(
+      //         widget.category.name,
+      //         style: TextStyle(
+      //             fontFamily: Theme.of(context).textTheme.headline6.fontFamily,
+      //             color: Colors.black),
+      //       ),
+      //     ],
+      //   ),
+      //   backgroundColor: Colors.white,
+      // ),
       body: Stack(
         children: [
           SvgPicture.asset(
@@ -191,33 +203,67 @@ class _QuestionPageState extends State<QuestionPage> {
             width: double.infinity,
             height: double.infinity,
           ),
-          IntroductionScreen(
-            globalBackgroundColor: Colors.transparent,
-            key: introKey,
-            pages: [
-              for (int i = 0; i < widget.category.questions.length; i++)
-                QuestionView(pageDecoration, i),
-            ],
-            onDone: () => _onIntroEnd(context),
-            showSkipButton: true,
-            showNextButton: false,
-            skipFlex: 0,
-            skip: Text("דלג", style: TextStyle(color: Colors.black)),
-            nextFlex: 0,
-            next: const Icon(Icons.arrow_forward),
-            done: const Text('סיום',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                    color: Colors.blueAccent)),
-            dotsDecorator: const DotsDecorator(
-              activeColor: Colors.blueAccent,
-              size: Size(10.0, 10.0),
-              color: Color(0xFFBDBDBD),
-              activeSize: Size(22.0, 10.0),
-              activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: IntroductionScreen(
+              globalBackgroundColor: Colors.transparent,
+              key: introKey,
+              pages: [
+                for (int i = 0; i < widget.category.questions.length; i++)
+                  QuestionView(pageDecoration, i),
+              ],
+              onDone: () => _onIntroEnd(context),
+              showSkipButton: false,
+              showNextButton: false,
+              skipFlex: 0,
+              nextFlex: 0,
+              next: const Icon(Icons.arrow_forward),
+              done: const Text('סיום',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 15,
+                      color: Colors.blueGrey)),
+              dotsDecorator: const DotsDecorator(
+                activeColor: Colors.blueGrey,
+                size: Size(10.0, 10.0),
+                color: Color(0xFFBDBDBD),
+                activeSize: Size(22.0, 10.0),
+                activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                ),
               ),
+            ),
+          ),
+          Positioned(
+            top: 40,
+            right: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                    // constraints: BoxConstraints(
+                    //   minHeight: 25,
+                    // ),
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.black,
+                      size: 22,
+                    ),
+                    onPressed: () {
+                      print("Here");
+                      Navigator.of(context).pop();
+                    }),
+                // Image.asset(widget.category.image, height: 40),
+                // SizedBox(width: 3),
+                // Text(
+                //   widget.category.name,
+                //   style: TextStyle(
+                //       fontFamily:
+                //           Theme.of(context).textTheme.headline6.fontFamily,
+                //       color: Colors.black,
+                //       fontSize: 18),
+                // ),
+              ],
             ),
           ),
         ],
@@ -241,40 +287,69 @@ class AnswerOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: press,
-      child: Container(
-        width: 300,
-        margin: EdgeInsets.only(top: kDefaultPadding),
-        padding: EdgeInsets.all(kDefaultPadding),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black87),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(3, 3),
-              blurRadius: 4,
-              color: Colors.grey[300],
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "${index + 1}. $text",
-              style: TextStyle(color: Colors.black87, fontSize: 20),
-            ),
-            // Container(
-            //   height: 26,
-            //   width: 26,
-            //   decoration: BoxDecoration(
-            //     color: Colors.transparent,
-            //     borderRadius: BorderRadius.circular(50),
-            //     border: Border.all(color: Colors.green),
-            //   ),
-            //   child: Icon(Icons.done, size: 16),
-            // )
-          ],
+      // child: Container(
+      //   width: 250,
+      //   height: 65,
+      //   margin: EdgeInsets.only(top: kDefaultPadding),
+      //   padding: EdgeInsets.all(kDefaultPadding),
+      //   decoration: BoxDecoration(
+      //     border: Border.all(color: Colors.black87),
+      //     color: Colors.white,
+      //     borderRadius: BorderRadius.circular(15),
+      //     boxShadow: [
+      //       BoxShadow(
+      //         offset: Offset(3, 3),
+      //         blurRadius: 4,
+      //         color: Colors.grey[300],
+      //       ),
+      //     ],
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       Text(
+      //         "${index + 1}. $text",
+      //         style: TextStyle(color: Colors.black87, fontSize: 18),
+      //       ),
+      //       // Container(
+      //       //   height: 26,
+      //       //   width: 26,
+      //       //   decoration: BoxDecoration(
+      //       //     color: Colors.transparent,
+      //       //     borderRadius: BorderRadius.circular(50),
+      //       //     border: Border.all(color: Colors.green),
+      //       //   ),
+      //       //   child: Icon(Icons.done, size: 16),
+      //       // )
+      //     ],
+      //   ),
+      // ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: AnimatedButton(
+            borderRadius: 12,
+            enable: true,
+            width: 200,
+            text: text,
+            onPress: () async {
+              Future.delayed(Duration(milliseconds: 500), () {
+                press();
+              });
+            },
+            backgroundColor: Colors.white,
+            selectedTextColor: Colors.white,
+            transitionType: TransitionType.RIGHT_CENTER_ROUNDER,
+            selectedBackgroundColor: Colors.green,
+            animationDuration: Duration(milliseconds: 300),
+            textStyle: TextStyle(
+                fontSize: 28,
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.w300),
+          ),
         ),
       ),
     );

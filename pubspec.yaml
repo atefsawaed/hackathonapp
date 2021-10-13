@@ -40,6 +40,7 @@ dev_dependencies:
   flutter_svg: ^0.18.1
   step_progress_indicator: ^0.2.5+8
   timeline_tile: ^0.1.2
+  flutter_animated_button: ^1.1.0
 
 flutter:
 

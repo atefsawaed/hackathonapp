@@ -88,26 +88,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       categoryGridItem(context, banking_category),
                       categoryGridItem(context, bank_card_category),
                       categoryGridItem(context, mortgage_category),
-                      categoryGridItem(context, stocks_category),
-
-                      // categoryGridItem(context, foreign_exchange_category),
                       categoryGridItem(context, kopat_gemel_category),
+                      categoryGridItem(context, children_savings_category),
                       categoryGridItem(context, payslip_category),
-                      categoryGridItem(context, maternity_leave_category),
                       categoryGridItem(context, nitzul_shuaa_category),
+                      categoryGridItem(context, maternity_leave_category),
                       categoryGridItem(context, life_insurance_category),
-                      // categoryGridItem(context, car_insurance_category),
                     ],
                   ),
                 ),
                 SizedBox(height: 20),
                 SizedBox(height: 20),
-                // CategoryCard(
-                //   text: "טקסט",
-                //   image: "assets/icons8-bank-account-48.png",
-                //   title: "נושא",
-                // ),
-
                 SizedBox(height: 50),
               ],
             )
