@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 3,
                     children: [
                       categoryGridItem(context, banking_category),
-                      categoryGridItem(context, bank_card_category),
+                      categoryGridItem(context, credit_card_category),
                       categoryGridItem(context, mortgage_category),
                       categoryGridItem(context, kopat_gemel_category),
                       categoryGridItem(context, children_savings_category),

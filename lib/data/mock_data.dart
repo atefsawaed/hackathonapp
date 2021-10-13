@@ -15,7 +15,7 @@ Answer banking_q1_a1 =
     Answer(id: "banking_q1_a1", answerTitle: "כן", tags: ["bank_tag1"]);
 
 Answer banking_q1_a2 =
-    Answer(id: "banking_q1_a2", answerTitle: "דלג", tags: ["bank_tag1"]);
+    Answer(id: "banking_q1_a2", answerTitle: "לא", tags: ["bank_tag1"]);
 
 Question banking_q1 = Question(
   id: "banknig_q1",
@@ -35,14 +35,14 @@ Answer banking_q2_a1 =
     Answer(id: "banking_q2_a1", answerTitle: "כן", tags: ["bank_tag2"]);
 
 Answer banking_q2_a2 =
-    Answer(id: "banking_q2_a2", answerTitle: "דלג", tags: ["bank_tag2"]);
+    Answer(id: "banking_q2_a2", answerTitle: "לא", tags: ["bank_tag2"]);
 
 Question banking_q2 = Question(
   id: "banknig_q2",
   levelTitle: "הקצאת מסגרת אשראי",
   questionTitle: "האם מסגרת האשראי שלך תואמת את הצרכים? ",
   questionDescription:
-      "הקצאת מסגרת אשראי לעיתים כרוחה בעלויות של ריבית ועמלה. כשאין צורך, מומלץ למזער. מצד שני, לעיתים צפויות הוצאות גדולות ובשביל להימנע מעלויות ריבית גבוהות יש להגדיר מסגרת אשראי מתאימה עם הבנק מבעוד מועד. ",
+      "הקצאת מסגרת אשראי לעיתים כרוכה בעלויות של ריבית ועמלה. כשאין צורך, מומלץ למזער. מצד שני, לעיתים צפויות הוצאות גדולות ובשביל להימנע מעלויות ריבית גבוהות יש להגדיר מסגרת אשראי מתאימה עם הבנק מבעוד מועד. ",
   categories: ["bank"],
   sortScore: 20,
   filters: ["bank_tag1"],
@@ -58,7 +58,7 @@ Answer banking_q3_a1 = Answer(
 
 Answer banking_q3_a2 = Answer(
   id: "banking_q3_a2",
-  answerTitle: "דלג",
+  answerTitle: "לא",
 );
 
 Question banking_q3 = Question(
@@ -73,15 +73,110 @@ Question banking_q3 = Question(
   answers: [banking_q3_a1, banking_q3_a2], // From above
 );
 
-// Other categories
+// Summary 1
 
-Category bank_card_category = Category(
-    id: "bank_card_category",
+Question banking_q4 = Question(
+  id: "banknig_s1",
+  levelTitle: "סיימנו",
+  questionTitle: "לא לשכוח לחזור לבדיקה במקרה של מעבר בנק",
+  questionDescription:
+      "**מושלם!** עכשיו אפשר להיות רגועים שחשבון הבנק מתנהל בצורה אופטימלית.",
+  categories: ["bank"],
+  sortScore: 40,
+  filters: ["bank_tag1", "bank_tag2"],
+  answers: [], // From above
+);
+
+// Credit Card Category
+
+Category credit_card_category = Category(
+    id: "credit_card_category",
     image: "assets/icons/icons8-bank-cards-48.png",
     name: "כרטיסי אשראי",
     isActive: true,
-    questions: [],
+    questions: [cc_q1, cc_q2],
     completionStatus: 3);
+
+// Question 1
+
+Answer cc_q1_a1 = Answer(
+  id: "cc_q1_a1",
+  answerTitle: "כן",
+);
+
+Answer cc_q1_a2 = Answer(
+  id: "cc_q1_a2",
+  answerTitle: "לא",
+);
+
+Question cc_q1 = Question(
+  id: "cc_q1",
+  levelTitle: "דמי שימוש",
+  questionTitle: "האם יש חיוב של דמי שימוש באחד מכרטיסי האשראי שברשותך?",
+  questionDescription:
+      "כרטיסי אשראי לרוב מונפקים בהתחלה ללא דמי שימוש חודשיים, אבל לעיתים ביטול דמי השימוש מוגבל מראש לשנה, וכעבור שנה מתחילים להופיע חיובים של דמי שימוש. יש לבדוק לפחות אחת לרבעון שאין חיוב של דמי שימוש בכל כרטיסי האשראי. ",
+  categories: ["cc"],
+  sortScore: 20,
+  filters: ["cc_tag1", "cc_tag2"],
+  answers: [cc_q1_a1, cc_q1_a2], // From above
+);
+
+// Question 2
+
+Answer cc_q2_a1 = Answer(
+  id: "cc_q2_a1",
+  answerTitle: "כן",
+);
+
+Answer cc_q2_a2 = Answer(
+  id: "cc_q2_a2",
+  answerTitle: "לא",
+);
+
+Answer cc_q2_a3 = Answer(
+  id: "cc_q2_a3",
+  answerTitle: "אינני מבצעת רכישות במט""ח",
+);
+
+Question cc_q2 = Question(
+  id: "cc_q2",
+  levelTitle: "עמלות מט""ח",
+  questionTitle: "האם ידועים לך דמי עמלת המרת המט""ח בכל כרטיסי האשראי שברשותך?",
+  questionDescription:
+      "כאשר מתבצעות רכישות במט""ח בכרטיסי אשראי, חברת האשראי עלולה לגבות עמלה. עמלה זו מתבטאת באחוז מסכום העסקה, ולכן במקרה של רכישה גדולה זה עלול להיות משמעותי. אם אתם מבצעים רכישות במט""ח, כדאי לדעת מראש באיזה כרטיס הכי משתלם לבצע את העסקה, והוא הכרטיס בוא נגבים עמלות המרת מט""ח הנמוכים ביותר. ",
+  categories: ["cc"],
+  sortScore: 30,
+  filters: ["cc_tag1", "cc_tag2"],
+  answers: [cc_q2_a1, cc_q2_a2, cc_q2_a3], // From above
+);
+
+// Summary 1
+
+Question cc_s1 = Question(
+  id: "cc_s1",
+  levelTitle: "יש לנו המלצות",
+  questionTitle: "",
+  questionDescription:
+      "**יש לפעול לביטול דמי השימוש החודשיים בכרטיס האשראי**. ברוב המקרים ניתן לבטל לחלוטין את דמי השימוש על ידי פנייה לחברת האשראי בבקשה לביטול דמי השימוש. במקרים אחרים ניתן פשוט לבטל את הכרטיס ולהנפיק כרטיס חדש. ",
+  categories: ["cc"],
+  sortScore: 40,
+  filters: ["cc_tag1", "cc_tag2"],
+  answers: [], // From above
+);
+
+// Summary 2
+
+Question cc_s2 = Question(
+  id: "cc_s2",
+  levelTitle: "יש לנו המלצות",
+  questionTitle: "",
+  questionDescription:
+      "**יש לפעול להשגת הטבת 0% עמלת מט""ח בכרטיס אשראי ושימוש בכרטיס זה לרכישות במט""ח**. במקרים רבים ניתן להגיע להסדר של 0% עמלת מט""ח בכרטיס אשראי על ידי שיחת טלפון לנציגי השרות. אפשרות נוספת היא הנפקת כרטיס עסקי או של הסדר מועדון אשר מספק הטבה זו. ",
+  categories: ["cc"],
+  sortScore: 50,
+  filters: ["cc_tag1", "cc_tag2"],
+  answers: [], // From above
+);
 
 Category mortgage_category = Category(
     id: "mortgage_category",
