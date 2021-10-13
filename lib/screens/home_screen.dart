@@ -46,18 +46,30 @@ class _HomeScreenState extends State<HomeScreen> {
         isActive: category.isActive,
         progress: category.completionStatus,
       ),
-      onTap: () {
+      onTap: () async {
         if (!category.isActive) {
           return;
         }
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => QuestionPage(
-              category: category,
-            ),
-            // builder: (_) => ActionItemScreen(actionItems: [ai1, ai2]),
-          ),
-        );
+
+        final result = await Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => QuestionPage(
+                      category: category,
+                    )));
+
+        if (result != null) {
+          setState(() {
+            category.completionStatus = 5;
+          });
+        }
+        // Navigator.of(context).push(MaterialPageRoute<bool>(
+        //   builder: (BuildContext context) {
+        //     return QuestionPage(
+        //       category: category,
+        //     );
+        //   },
+        // ));
       },
     );
   }
@@ -88,14 +100,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 3,
                     children: [
                       categoryGridItem(context, banking_category),
-                      categoryGridItem(context, bank_card_category),
+                      categoryGridItem(context, credit_card_category),
                       categoryGridItem(context, mortgage_category),
-                      categoryGridItem(context, kopat_gemel_category),
+                      // categoryGridItem(context, kopat_gemel_category),
                       categoryGridItem(context, children_savings_category),
                       categoryGridItem(context, payslip_category),
                       categoryGridItem(context, nitzul_shuaa_category),
                       categoryGridItem(context, maternity_leave_category),
                       categoryGridItem(context, life_insurance_category),
+                      categoryGridItem(context, car_insurance_category),
                     ],
                   ),
                 ),

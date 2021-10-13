@@ -43,6 +43,8 @@ dev_dependencies:
   flutter_animated_button: ^1.1.0
   loading_indicator: ^1.2.0
   slimy_card: ^1.0.4
+  auto_size_text: ^2.1.0
+  flutter_markdown: ^0.5.2
 
 flutter:
 

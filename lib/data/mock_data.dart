@@ -1,6 +1,7 @@
 import 'package:hackathon_app/models/action_item.dart';
 import 'package:hackathon_app/models/answer.dart';
 import 'package:hackathon_app/models/category.dart';
+import 'package:hackathon_app/models/intro_question.dart';
 import 'package:hackathon_app/models/question.dart';
 
 // Bank category
@@ -9,8 +10,8 @@ Category banking_category = Category(
     image: "assets/icons/icons8-bank-building-48.png",
     name: "חשבון בנק",
     isActive: true,
-    questions: [banking_q1, banking_q2, banking_q3],
-    completionStatus: 4);
+    questions: [intro_q2, intro_q3, banking_q1, banking_q2, banking_q3],
+    completionStatus: 0);
 
 Answer banking_q1_a1 =
     Answer(id: "banking_q1_a1", answerTitle: "כן", tags: ["bank_tag1"]);
@@ -65,9 +66,9 @@ Answer banking_q3_a2 = Answer(
 Question banking_q3 = Question(
   id: "banknig_q3",
   levelTitle: "עמלות",
-  questionTitle: "האם קיבלת אם הטבת העמלות הטובה ביותר עבורך?",
+  questionTitle: "האם קיבלת את הטבת העמלות הטובה ביותר עבורך?",
   questionDescription:
-      "ניהול חשבון בנק כולל במקרים רבים עמלות שונות ומגוונות. בהתאם לסטטוס ובעיקר בהתאם לגודל המשכורת/ות הנכנסות, ניתן לקבל הנחות משמעותיות בעמלות, ואף להגיע לחשבון ללא עמלות בכלל. בכל מקרה יש לבדוק מדי שנה את עלויות העמלות ולברר עם הבנקאי איפה ניתן להוזיל. בשביל לראות בצורה הטובה ביותר סיכום של תשלומי העמלות, ניתן להוציא (אפילו דרך האינטרנט) טופס שנקרא ת.ז. בנקאית ושם ניתן לראות ריכוז של כל תשלומי העמלות. ",
+      "ניהול חשבון בנק כולל במקרים רבים עמלות שונות ומגוונות. בהתאם לסטטוס ובעיקר בהתאם לגודל המשכורת/ות הנכנסות, ניתן לקבל הנחות משמעותיות בעמלות, ואף להגיע לחשבון ללא עמלות בכלל.",
   categories: ["bank"],
   sortScore: 30,
   filters: ["bank_tag1", "bank_tag2"],
@@ -95,8 +96,8 @@ Category credit_card_category = Category(
     image: "assets/icons/icons8-bank-cards-48.png",
     name: "כרטיסי אשראי",
     isActive: true,
-    questions: [cc_q1, cc_q2],
-    completionStatus: 3);
+    questions: [cc_q1, cc_q2, cc_s1, cc_s2],
+    completionStatus: 0);
 
 // Question 1
 
@@ -119,7 +120,10 @@ Question cc_q1 = Question(
   categories: ["cc"],
   sortScore: 20,
   filters: ["cc_tag1", "cc_tag2"],
-  answers: [cc_q1_a1, cc_q1_a2], // From above
+  answers: [
+    cc_q1_a1,
+    cc_q1_a2,
+  ], // From above
 );
 
 // Question 2
@@ -136,56 +140,66 @@ Answer cc_q2_a2 = Answer(
 
 Answer cc_q2_a3 = Answer(
   id: "cc_q2_a3",
-  answerTitle: "אינני מבצעת רכישות במט""ח",
+  answerTitle: "אינני מבצעת רכישות במט" "ח",
 );
 
 Question cc_q2 = Question(
   id: "cc_q2",
-  levelTitle: "עמלות מט""ח",
-  questionTitle: "האם ידועים לך דמי עמלת המרת המט""ח בכל כרטיסי האשראי שברשותך?",
-  questionDescription:
-      "כאשר מתבצעות רכישות במט""ח בכרטיסי אשראי, חברת האשראי עלולה לגבות עמלה. עמלה זו מתבטאת באחוז מסכום העסקה, ולכן במקרה של רכישה גדולה זה עלול להיות משמעותי. אם אתם מבצעים רכישות במט""ח, כדאי לדעת מראש באיזה כרטיס הכי משתלם לבצע את העסקה, והוא הכרטיס בוא נגבים עמלות המרת מט""ח הנמוכים ביותר. ",
+  levelTitle: "עמלות מט" "ח",
+  questionTitle:
+      "האם ידועים לך דמי עמלת המרת המט" "ח בכל כרטיסי האשראי שברשותך?",
+  questionDescription: "כאשר מתבצעות רכישות במט"
+      "ח בכרטיסי אשראי, חברת האשראי עלולה לגבות עמלה. עמלה זו מתבטאת באחוז מסכום העסקה, ולכן במקרה של רכישה גדולה זה עלול להיות משמעותי. אם אתם מבצעים רכישות במט"
+      "ח, כדאי לדעת מראש באיזה כרטיס הכי משתלם לבצע את העסקה, והוא הכרטיס בוא נגבים עמלות המרת מט"
+      "ח הנמוכים ביותר. ",
   categories: ["cc"],
   sortScore: 30,
   filters: ["cc_tag1", "cc_tag2"],
-  answers: [cc_q2_a1, cc_q2_a2, cc_q2_a3], // From above
+  answers: [
+    cc_q2_a1,
+    cc_q2_a2,
+
+    // cc_q2_a3,
+  ], // From above
 );
 
 // Summary 1
 
 Question cc_s1 = Question(
   id: "cc_s1",
-  levelTitle: "יש לנו המלצות",
+  levelTitle: "יש לנו הצעות",
   questionTitle: "",
   questionDescription:
       "**יש לפעול לביטול דמי השימוש החודשיים בכרטיס האשראי**. ברוב המקרים ניתן לבטל לחלוטין את דמי השימוש על ידי פנייה לחברת האשראי בבקשה לביטול דמי השימוש. במקרים אחרים ניתן פשוט לבטל את הכרטיס ולהנפיק כרטיס חדש. ",
   categories: ["cc"],
   sortScore: 40,
   filters: ["cc_tag1", "cc_tag2"],
-  answers: [], // From above
+  answers: [Answer(id: "cc_s1_a1", answerTitle: "מעולה!")], // From above
 );
 
 // Summary 2
 
-Question cc_s1 = Question(
-  id: "cc_s1",
-  levelTitle: "יש לנו המלצות",
+Question cc_s2 = Question(
+  id: "cc_s2",
+  levelTitle: "יש לנו הצעות",
   questionTitle: "",
-  questionDescription:
-      "**יש לפעול להשגת הטבת 0% עמלת מט""ח בכרטיס אשראי ושימוש בכרטיס זה לרכישות במט""ח**. במקרים רבים ניתן להגיע להסדר של 0% עמלת מט""ח בכרטיס אשראי על ידי שיחת טלפון לנציגי השרות. אפשרות נוספת היא הנפקת כרטיס עסקי או של הסדר מועדון אשר מספק הטבה זו. ",
+  questionDescription: "**יש לפעול להשגת הטבת 0% עמלת מט"
+      "ח בכרטיס אשראי ושימוש בכרטיס זה לרכישות במט"
+      "ח**. במקרים רבים ניתן להגיע להסדר של 0% עמלת מט"
+      "ח בכרטיס אשראי על ידי שיחת טלפון לנציגי השרות. אפשרות נוספת היא הנפקת כרטיס עסקי או של הסדר מועדון אשר מספק הטבה זו. ",
   categories: ["cc"],
   sortScore: 50,
   filters: ["cc_tag1", "cc_tag2"],
-  answers: [], // From above
+  answers: [Answer(id: "cc_s2_a1", answerTitle: "אחלה!")], // From above
 );
 
 Category mortgage_category = Category(
     id: "mortgage_category",
     image: "assets/icons/icons8-property-48.png",
     name: "משכנתא",
-    isActive: true,
+    isActive: false,
     questions: [],
-    completionStatus: 2);
+    completionStatus: 3);
 
 Category stocks_category = Category(
     id: "stocks_category",
@@ -201,7 +215,7 @@ Category payslip_category = Category(
     name: "תלוש משכורת",
     isActive: false,
     questions: [],
-    completionStatus: 0);
+    completionStatus: 1);
 
 // Category foreign_exchange_category = Category(
 //     id: "foreign_exchange_category",
@@ -211,13 +225,13 @@ Category payslip_category = Category(
 //     questions: [],
 //     completionStatus: 0);
 
-Category kopat_gemel_category = Category(
-    id: "kopat_gemel_category",
-    image: "assets/icons/icons8-money-box-48.png",
-    name: "קופת גמל להשקעה",
-    isActive: false,
-    questions: [],
-    completionStatus: 0);
+// Category kopat_gemel_category = Category(
+//     id: "kopat_gemel_category",
+//     image: "assets/icons/icons8-money-box-48.png",
+//     name: "קופת גמל להשקעה",
+//     isActive: false,
+//     questions: [],
+//     completionStatus: 0);
 
 Category maternity_leave_category = Category(
     id: "maternity_leave_category",
@@ -270,3 +284,60 @@ ActionItem ai2 = ActionItem(
     title: "המלצה מספר 2",
     description:
         "המלצה המלצה טקסט המצלה המלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלההמלצה המלצה טקסט המצלה");
+
+// Introduction Questions
+IntroQuestion intro_q1 = IntroQuestion(
+  id: "intro_q1",
+  questionTitle: "?מהי שנת הלידה שלך",
+  // answerType: YearSelector,
+);
+
+Answer intro_q2_a1 = Answer(
+  id: "intro_q2_a1",
+  answerTitle: "רווק",
+  tags: ["bachelor"],
+);
+
+Answer intro_q2_a2 = Answer(
+  id: "intro_q2_a2",
+  answerTitle: "נשוי או ידוע בציבור",
+  tags: ["married"],
+);
+
+Answer intro_q2_a3 = Answer(
+  id: "intro_q2_a3",
+  answerTitle: "אלמן",
+  tags: ["widower"],
+);
+
+Question intro_q2 = Question(
+    id: "intro_q2",
+    levelTitle: "",
+    questionTitle: "מה המצב המשפחתי שלך?",
+    questionDescription: "",
+    answers: [intro_q2_a1, intro_q2_a2, intro_q2_a3]);
+
+Answer intro_q3_a1 = Answer(
+  id: "intro_q3_a1",
+  answerTitle: "יש ילדים עד גיל 18",
+  tags: ["has_young_children"],
+);
+
+Answer intro_q3_a2 = Answer(
+  id: "intro_q3_a2",
+  answerTitle: "כל הילדים מעל גיל 18",
+  tags: ["has_old_children"],
+);
+
+Answer intro_q3_a3 = Answer(
+  id: "intro_q3_a3",
+  answerTitle: "אין לי ילדים",
+  tags: ["no_children"],
+);
+
+Question intro_q3 = Question(
+    levelTitle: "",
+    id: "intro_q3",
+    questionDescription: "",
+    questionTitle: "האם יש לך ילדים?",
+    answers: [intro_q3_a1, intro_q3_a2, intro_q3_a3]);

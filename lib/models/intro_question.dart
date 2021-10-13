@@ -4,16 +4,14 @@ import 'package:hackathon_app/models/answer.dart';
 class IntroQuestion {
   String id;
   String questionTitle;
-  String questionDescription;
   double sortScore;
-  List<String> categories;
   List<Answer> answers;
+  String answerType;
 
   IntroQuestion({
     @required this.id,
     @required this.questionTitle,
-    @required this.questionDescription,
-    @required this.categories,
-    @required this.answers,
+    this.answers,
+    this.answerType,
   });
 }

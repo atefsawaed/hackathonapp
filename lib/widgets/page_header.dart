@@ -41,7 +41,7 @@ class _MyHeaderState extends State<MyHeader> {
                 children: <Widget>[
                   Positioned(
                     top: 1,
-                    left: -10,
+                    left: -25,
                     bottom: 10,
                     // ),
                     child: Image.asset(

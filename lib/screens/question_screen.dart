@@ -7,6 +7,7 @@ import 'package:hackathon_app/utils/size_config.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 const kSecondaryColor = Color(0xFF8B94BC);
 const kGreenColor = Color(0xFF6AC259);
@@ -118,55 +119,60 @@ class _QuestionPageState extends State<QuestionPage> {
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-              height: 320,
+              height: 350,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
                     child: Container(
-                      height: 25,
+                      height: 30,
                       child: Text(
                         widget.category.questions[index].levelTitle,
                         style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w400,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
                             color: Colors.blueGrey),
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-                  Center(
-                    child: Container(
-                      height: 80,
-                      child: Text(
-                        widget.category.questions[index].questionTitle,
-                        style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15, left: 60),
+                    child: Center(
+                      child: Container(
+                          height: 210,
+                          // child: Text(
+                          //   widget.category.questions[index].questionDescription,
+                          //   style: TextStyle(
+                          //       fontSize: 19,
+                          //       fontWeight: FontWeight.w400,
+                          //       color: Colors.grey[800]),
+                          // ),
+                          child: Markdown(
+                              styleSheet:
+                                  MarkdownStyleSheet(textScaleFactor: 1.3),
+                              data: widget.category.questions[index]
+                                  .questionDescription)),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15, left: 50),
-                    child: Center(
-                      child: Container(
-                        height: 200,
-                        child: Text(
-                          widget.category.questions[index].questionDescription,
-                          style: TextStyle(
-                              fontSize: 21,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey[800]),
-                        ),
+                    padding: const EdgeInsets.only(top: 10, left: 60),
+                    child: Container(
+                      height: 85,
+                      child: Text(
+                        widget.category.questions[index].questionTitle,
+                        style: TextStyle(
+                            fontSize: 21,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black87),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
                 ],
               )),
           Container(
-            height: 370,
+            height: 200,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -179,10 +185,9 @@ class _QuestionPageState extends State<QuestionPage> {
                         widget.category.questions[index].answers[i].answerTitle,
                     press: () {
                       if (index == widget.category.questions.length - 1) {
-                        // TODO: Handle last question
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => LoadingAIScreen()),
-                        );
+                        // Navigator.of(context).pop();
+                        Navigator.pop(context, true);
+                        widget.category.completionStatus = 5;
                       } else {
                         introKey.currentState.controller.nextPage(
                             duration: Duration(milliseconds: 300),
@@ -246,7 +251,7 @@ class _QuestionPageState extends State<QuestionPage> {
             height: double.infinity,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 50),
+            padding: const EdgeInsets.only(top: 30),
             child: IntroductionScreen(
               freeze: true,
               globalBackgroundColor: Colors.transparent,
@@ -278,7 +283,7 @@ class _QuestionPageState extends State<QuestionPage> {
             ),
           ),
           Positioned(
-            top: 40,
+            top: 20,
             right: 20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -368,7 +373,7 @@ class AnswerOption extends StatelessWidget {
       //   ),
       // ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
@@ -389,7 +394,7 @@ class AnswerOption extends StatelessWidget {
             selectedBackgroundColor: Colors.green,
             animationDuration: Duration(milliseconds: 300),
             textStyle: TextStyle(
-                fontSize: 28,
+                fontSize: 20,
                 color: Colors.blueGrey,
                 fontWeight: FontWeight.w300),
           ),
