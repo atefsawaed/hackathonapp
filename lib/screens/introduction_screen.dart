@@ -128,14 +128,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
         PageViewModel(
           title: "קבלו את מה שמגיע לכם",
-          body: "תלמדו היטב על הזכויות שלכן ואיך למצוא אותן",
+          body: "למדו היטב על הזכויות שלכן ואיך למצוא אותן",
           image: _buildImage('intro_2', 180),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "המלצות מותאמות אישית!",
           body:
-              "על פי המידע שנקבל מכם, אנו נתאים עבורכם המלצות שיעזרו לכן להתנהל כלכלית!",
+              "על פי המידע שנקבל מכם, אנו נתאים עבורכם המלצות שיעזרו לכם להתנהל כלכלית!",
           image: _buildImage('intro_3', 250),
           decoration: pageDecoration,
         ),
