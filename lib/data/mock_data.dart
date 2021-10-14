@@ -10,7 +10,14 @@ Category banking_category = Category(
     image: "assets/icons/icons8-bank-building-48.png",
     name: "חשבון בנק",
     isActive: true,
-    questions: [intro_q2, intro_q3, banking_q1, banking_q2, banking_q3],
+    questions: [
+      // intro_q2,
+      // intro_q3,
+      banking_q1,
+      banking_q2,
+      banking_q3,
+      banking_q4
+    ],
     completionStatus: 0);
 
 Answer banking_q1_a1 =
@@ -28,7 +35,10 @@ Question banking_q1 = Question(
   categories: ["bank"],
   sortScore: 10,
   filters: [],
-  answers: [banking_q1_a1, banking_q1_a2], // From above
+  answers: [
+    banking_q1_a1,
+    banking_q1_a2,
+  ], // From above
 );
 
 // Question 2
@@ -149,9 +159,7 @@ Question cc_q2 = Question(
   questionTitle:
       "האם ידועים לך דמי עמלת המרת המט" "ח בכל כרטיסי האשראי שברשותך?",
   questionDescription: "כאשר מתבצעות רכישות במט"
-      "ח בכרטיסי אשראי, חברת האשראי עלולה לגבות עמלה. עמלה זו מתבטאת באחוז מסכום העסקה, ולכן במקרה של רכישה גדולה זה עלול להיות משמעותי. אם אתם מבצעים רכישות במט"
-      "ח, כדאי לדעת מראש באיזה כרטיס הכי משתלם לבצע את העסקה, והוא הכרטיס בוא נגבים עמלות המרת מט"
-      "ח הנמוכים ביותר. ",
+      "ח בכרטיסי אשראי, חברת האשראי עלולה לגבות עמלה. עמלה זו מתבטאת באחוז מסכום העסקה, ולכן במקרה של רכישה גדולה זה עלול להיות משמעותי. ",
   categories: ["cc"],
   sortScore: 30,
   filters: ["cc_tag1", "cc_tag2"],
@@ -186,7 +194,7 @@ Question cc_s2 = Question(
   questionDescription: "**יש לפעול להשגת הטבת 0% עמלת מט"
       "ח בכרטיס אשראי ושימוש בכרטיס זה לרכישות במט"
       "ח**. במקרים רבים ניתן להגיע להסדר של 0% עמלת מט"
-      "ח בכרטיס אשראי על ידי שיחת טלפון לנציגי השרות. אפשרות נוספת היא הנפקת כרטיס עסקי או של הסדר מועדון אשר מספק הטבה זו. ",
+      "ח בכרטיס אשראי על ידי שיחת טלפון לנציגי השרות. ",
   categories: ["cc"],
   sortScore: 50,
   filters: ["cc_tag1", "cc_tag2"],
@@ -225,13 +233,13 @@ Category payslip_category = Category(
 //     questions: [],
 //     completionStatus: 0);
 
-// Category kopat_gemel_category = Category(
-//     id: "kopat_gemel_category",
-//     image: "assets/icons/icons8-money-box-48.png",
-//     name: "קופת גמל להשקעה",
-//     isActive: false,
-//     questions: [],
-//     completionStatus: 0);
+Category kopat_gemel_category = Category(
+    id: "kopat_gemel_category",
+    image: "assets/icons/icons8-money-box-48.png",
+    name: "גמל להשקעה",
+    isActive: false,
+    questions: [],
+    completionStatus: 0);
 
 Category maternity_leave_category = Category(
     id: "maternity_leave_category",

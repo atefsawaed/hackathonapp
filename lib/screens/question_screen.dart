@@ -8,6 +8,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:awesome_dialog/awesome_dialog.dart' as ad;
 
 const kSecondaryColor = Color(0xFF8B94BC);
 const kGreenColor = Color(0xFF6AC259);
@@ -70,9 +71,7 @@ class _QuestionPageState extends State<QuestionPage> {
   }
 
   void _onIntroEnd(context) {
-    // Navigator.of(context).push(
-    //   MaterialPageRoute(builder: (_) => HomeScreen()),
-    // );
+    Navigator.pop(context, true);
   }
 
   Widget _buildImage(String assetName, double width) {
@@ -183,11 +182,24 @@ class _QuestionPageState extends State<QuestionPage> {
                     index: i,
                     text:
                         widget.category.questions[index].answers[i].answerTitle,
-                    press: () {
+                    press: () async {
                       if (index == widget.category.questions.length - 1) {
                         // Navigator.of(context).pop();
+                        // ad.AwesomeDialog(
+                        //   context: context,
+                        //   dialogType: ad.DialogType.SUCCES,
+                        //   autoHide: Duration(seconds: 2),
+                        //   animType: ad.AnimType.BOTTOMSLIDE,
+                        //   title: 'סיימת בהצלחה!',
+                        //   desc:
+                        //       'יופי, סיימת בהצלחה את הצק ליסט! כדאי לעבור לצק ליסט הבא.',
+                        //   btnCancelOnPress: () {},
+                        //   btnOkOnPress: () {},
+                        // )..show();
+                        // await Future.delayed(Duration(milliseconds: 100), () {
+                        //   // Do something
+                        // });
                         Navigator.pop(context, true);
-                        widget.category.completionStatus = 5;
                       } else {
                         introKey.currentState.controller.nextPage(
                             duration: Duration(milliseconds: 300),
