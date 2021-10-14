@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: GridView.count(
                     shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     addRepaintBoundaries: false,
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 20,
@@ -290,14 +291,15 @@ class SubcategoryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Image.asset(image, height: 40),
-          Text(
+          FittedBox(
+              child: Text(
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
-          ),
+          )),
           SizedBox(height: 3),
           CircularStepProgressIndicator(
             currentStep: progress, // FILL HERE
