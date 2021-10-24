@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackathon_app/screens/home_screen.dart';
 import 'package:hackathon_app/utils/constants.dart';
 import 'screens/introduction_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+bool initScreen;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +44,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      initialRoute: initScreen == false || initScreen == null ? "intro" : "home",
+      routes: {
+        "home": (context) => HomeScreen(),
+        "intro": (context) => OnBoardingPage(),
+      },
       debugShowCheckedModeBanner: false,
       home: OnBoardingPage(),
     );
