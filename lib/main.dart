@@ -5,6 +5,7 @@ import 'package:hackathon_app/utils/constants.dart';
 import 'screens/introduction_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 bool initScreen;
 
@@ -13,11 +14,19 @@ void main() async {
   // await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool initScreen = prefs.getBool('initScreen');
 
-  runApp(MyApp());
+  runApp(MyApp(initScreen));
 }
 
 class MyApp extends StatelessWidget {
+  MyApp(bool initScreen) {
+    initScreen = initScreen;
+  }
+
+  get initScreen => initScreen;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,7 +53,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: initScreen == false || initScreen == null ? "intro" : "home",
+      initialRoute: initScreen == false ? "intro" : "home",
       routes: {
         "home": (context) => HomeScreen(),
         "intro": (context) => OnBoardingPage(),
