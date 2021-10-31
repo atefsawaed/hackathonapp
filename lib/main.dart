@@ -7,7 +7,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-bool initScreen;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
