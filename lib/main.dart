@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackathon_app/screens/home_screen.dart';
 import 'package:hackathon_app/utils/constants.dart';
 import 'screens/introduction_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool initScreen = prefs.getBool('initScreen') ?? false;
 
-  runApp(MyApp());
+  runApp(MyApp(initScreen));
 }
 
 class MyApp extends StatelessWidget {
+  MyApp(bool initScreen) {
+    initScreen = initScreen;
+  }
+
+  get initScreen => initScreen;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,6 +52,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      initialRoute: initScreen == false ? "intro" : "home",
+      routes: {
+        "home": (context) => HomeScreen(),
+        "intro": (context) => OnBoardingPage(),
+      },
       debugShowCheckedModeBanner: false,
       home: OnBoardingPage(),
     );

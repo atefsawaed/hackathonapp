@@ -6,6 +6,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -15,7 +16,13 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
+  Future setFirstSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('initScreen', true);
+  }
+
   void _onIntroEnd(context) {
+    setFirstSeen();
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => HomeScreen()),
     );
