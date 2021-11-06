@@ -14,7 +14,7 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool initScreen = prefs.getBool('initScreen');
+  bool initScreen = prefs.getBool('initScreen') ?? false;
 
   runApp(MyApp(initScreen));
 }
